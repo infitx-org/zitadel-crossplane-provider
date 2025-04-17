@@ -9,7 +9,7 @@ import (
 
 	"github.com/crossplane/upjet/pkg/controller"
 
-	resource "github.com/infitx-org/zitadel-crossplane-provider/internal/controller/null/resource"
+	user "github.com/infitx-org/zitadel-crossplane-provider/internal/controller/human/user"
 	providerconfig "github.com/infitx-org/zitadel-crossplane-provider/internal/controller/providerconfig"
 )
 
@@ -17,7 +17,7 @@ import (
 // the supplied manager.
 func Setup(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
-		resource.Setup,
+		user.Setup,
 		providerconfig.Setup,
 	} {
 		if err := setup(mgr, o); err != nil {

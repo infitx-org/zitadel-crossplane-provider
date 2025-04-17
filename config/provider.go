@@ -10,7 +10,7 @@ import (
 
 	ujconfig "github.com/crossplane/upjet/pkg/config"
 
-	"github.com/infitx-org/zitadel-crossplane-provider/config/null"
+	"github.com/infitx-org/zitadel-crossplane-provider/config/humanuser"
 )
 
 const (
@@ -27,7 +27,7 @@ var providerMetadata string
 // GetProvider returns provider configuration
 func GetProvider() *ujconfig.Provider {
 	pc := ujconfig.NewProvider([]byte(providerSchema), resourcePrefix, modulePath, []byte(providerMetadata),
-		ujconfig.WithRootGroup("crossplane.io"),
+		ujconfig.WithRootGroup("zitadel.crossplane.io"),
 		ujconfig.WithIncludeList(ExternalNameConfigured()),
 		ujconfig.WithFeaturesPackage("internal/features"),
 		ujconfig.WithDefaultResourceOptions(
@@ -36,7 +36,7 @@ func GetProvider() *ujconfig.Provider {
 
 	for _, configure := range []func(provider *ujconfig.Provider){
 		// add custom config functions
-		null.Configure,
+		humanuser.Configure,
 	} {
 		configure(pc)
 	}

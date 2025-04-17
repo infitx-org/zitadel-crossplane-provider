@@ -4,18 +4,18 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.14.0
-  name: resources.null.zitadel.upbound.io
+  name: users.human.zitadel.crossplane.io
 spec:
-  group: null.zitadel.upbound.io
+  group: human.zitadel.crossplane.io
   names:
     categories:
     - crossplane
     - managed
     - zitadel
-    kind: Resource
-    listKind: ResourceList
-    plural: resources
-    singular: resource
+    kind: User
+    listKind: UserList
+    plural: users
+    singular: user
   scope: Cluster
   versions:
   - additionalPrinterColumns:
@@ -34,10 +34,9 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: Resource is the Schema for the Resources API. The null_resource
-          resource implements the standard resource lifecycle but takes no further
-          action.hashicorp. The triggers argument allows specifying an arbitrary set
-          of values that, when changed, will cause the resource to be replaced.
+        description: User is the Schema for the Users API. Resource representing a
+          human user situated under an organization, which then can be authorized
+          through memberships or direct grants on other resources.
         properties:
           apiVersion:
             description: |-
@@ -57,7 +56,7 @@ spec:
           metadata:
             type: object
           spec:
-            description: ResourceSpec defines the desired state of Resource
+            description: UserSpec defines the desired state of User
             properties:
               deletionPolicy:
                 default: Delete
@@ -75,14 +74,85 @@ spec:
                 type: string
               forProvider:
                 properties:
-                  triggers:
-                    additionalProperties:
-                      type: string
+                  displayName:
                     description: |-
-                      running any associated provisioners.
-                      A map of arbitrary strings that, when changed, will force the null resource to be replaced, re-running any associated provisioners.
+                      (String) Display name of the user
+                      Display name of the user
+                    type: string
+                  email:
+                    description: |-
+                      (String) Email of the user
+                      Email of the user
+                    type: string
+                  firstName:
+                    description: |-
+                      (String) First name of the user
+                      First name of the user
+                    type: string
+                  gender:
+                    description: |-
+                      (String) Gender of the user, supported values: GENDER_UNSPECIFIED, GENDER_FEMALE, GENDER_MALE, GENDER_DIVERSE
+                      Gender of the user, supported values: GENDER_UNSPECIFIED, GENDER_FEMALE, GENDER_MALE, GENDER_DIVERSE
+                    type: string
+                  initialPasswordSecretRef:
+                    description: |-
+                      (String, Sensitive) Initially set password for the user, not changeable after creation
+                      Initially set password for the user, not changeable after creation
+                    properties:
+                      key:
+                        description: The key to select.
+                        type: string
+                      name:
+                        description: Name of the secret.
+                        type: string
+                      namespace:
+                        description: Namespace of the secret.
+                        type: string
+                    required:
+                    - key
+                    - name
+                    - namespace
                     type: object
-                    x-kubernetes-map-type: granular
+                  isEmailVerified:
+                    description: |-
+                      (Boolean) Is the email verified of the user, can only be true if password of the user is set
+                      Is the email verified of the user, can only be true if password of the user is set
+                    type: boolean
+                  isPhoneVerified:
+                    description: |-
+                      (Boolean) Is the phone verified of the user
+                      Is the phone verified of the user
+                    type: boolean
+                  lastName:
+                    description: |-
+                      (String) Last name of the user
+                      Last name of the user
+                    type: string
+                  nickName:
+                    description: |-
+                      (String) Nick name of the user
+                      Nick name of the user
+                    type: string
+                  orgId:
+                    description: |-
+                      (String) ID of the organization
+                      ID of the organization
+                    type: string
+                  phone:
+                    description: |-
+                      (String) Phone of the user
+                      Phone of the user
+                    type: string
+                  preferredLanguage:
+                    description: |-
+                      (String) Preferred language of the user
+                      Preferred language of the user
+                    type: string
+                  userName:
+                    description: |-
+                      (String) Username
+                      Username
+                    type: string
                 type: object
               initProvider:
                 description: |-
@@ -97,14 +167,85 @@ spec:
                   for example because of an external controller is managing them, like an
                   autoscaler.
                 properties:
-                  triggers:
-                    additionalProperties:
-                      type: string
+                  displayName:
                     description: |-
-                      running any associated provisioners.
-                      A map of arbitrary strings that, when changed, will force the null resource to be replaced, re-running any associated provisioners.
+                      (String) Display name of the user
+                      Display name of the user
+                    type: string
+                  email:
+                    description: |-
+                      (String) Email of the user
+                      Email of the user
+                    type: string
+                  firstName:
+                    description: |-
+                      (String) First name of the user
+                      First name of the user
+                    type: string
+                  gender:
+                    description: |-
+                      (String) Gender of the user, supported values: GENDER_UNSPECIFIED, GENDER_FEMALE, GENDER_MALE, GENDER_DIVERSE
+                      Gender of the user, supported values: GENDER_UNSPECIFIED, GENDER_FEMALE, GENDER_MALE, GENDER_DIVERSE
+                    type: string
+                  initialPasswordSecretRef:
+                    description: |-
+                      (String, Sensitive) Initially set password for the user, not changeable after creation
+                      Initially set password for the user, not changeable after creation
+                    properties:
+                      key:
+                        description: The key to select.
+                        type: string
+                      name:
+                        description: Name of the secret.
+                        type: string
+                      namespace:
+                        description: Namespace of the secret.
+                        type: string
+                    required:
+                    - key
+                    - name
+                    - namespace
                     type: object
-                    x-kubernetes-map-type: granular
+                  isEmailVerified:
+                    description: |-
+                      (Boolean) Is the email verified of the user, can only be true if password of the user is set
+                      Is the email verified of the user, can only be true if password of the user is set
+                    type: boolean
+                  isPhoneVerified:
+                    description: |-
+                      (Boolean) Is the phone verified of the user
+                      Is the phone verified of the user
+                    type: boolean
+                  lastName:
+                    description: |-
+                      (String) Last name of the user
+                      Last name of the user
+                    type: string
+                  nickName:
+                    description: |-
+                      (String) Nick name of the user
+                      Nick name of the user
+                    type: string
+                  orgId:
+                    description: |-
+                      (String) ID of the organization
+                      ID of the organization
+                    type: string
+                  phone:
+                    description: |-
+                      (String) Phone of the user
+                      Phone of the user
+                    type: string
+                  preferredLanguage:
+                    description: |-
+                      (String) Preferred language of the user
+                      Preferred language of the user
+                    type: string
+                  userName:
+                    description: |-
+                      (String) Username
+                      Username
+                    type: string
                 type: object
               managementPolicies:
                 default:
@@ -273,23 +414,108 @@ spec:
             required:
             - forProvider
             type: object
+            x-kubernetes-validations:
+            - message: spec.forProvider.email is a required parameter
+              rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
+                || ''Update'' in self.managementPolicies) || has(self.forProvider.email)
+                || (has(self.initProvider) && has(self.initProvider.email))'
+            - message: spec.forProvider.firstName is a required parameter
+              rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
+                || ''Update'' in self.managementPolicies) || has(self.forProvider.firstName)
+                || (has(self.initProvider) && has(self.initProvider.firstName))'
+            - message: spec.forProvider.lastName is a required parameter
+              rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
+                || ''Update'' in self.managementPolicies) || has(self.forProvider.lastName)
+                || (has(self.initProvider) && has(self.initProvider.lastName))'
+            - message: spec.forProvider.userName is a required parameter
+              rule: '!(''*'' in self.managementPolicies || ''Create'' in self.managementPolicies
+                || ''Update'' in self.managementPolicies) || has(self.forProvider.userName)
+                || (has(self.initProvider) && has(self.initProvider.userName))'
           status:
-            description: ResourceStatus defines the observed state of Resource.
+            description: UserStatus defines the observed state of User.
             properties:
               atProvider:
                 properties:
-                  id:
-                    description: (String) This is set to a random value at create
-                      time.
-                    type: string
-                  triggers:
-                    additionalProperties:
-                      type: string
+                  displayName:
                     description: |-
-                      running any associated provisioners.
-                      A map of arbitrary strings that, when changed, will force the null resource to be replaced, re-running any associated provisioners.
-                    type: object
-                    x-kubernetes-map-type: granular
+                      (String) Display name of the user
+                      Display name of the user
+                    type: string
+                  email:
+                    description: |-
+                      (String) Email of the user
+                      Email of the user
+                    type: string
+                  firstName:
+                    description: |-
+                      (String) First name of the user
+                      First name of the user
+                    type: string
+                  gender:
+                    description: |-
+                      (String) Gender of the user, supported values: GENDER_UNSPECIFIED, GENDER_FEMALE, GENDER_MALE, GENDER_DIVERSE
+                      Gender of the user, supported values: GENDER_UNSPECIFIED, GENDER_FEMALE, GENDER_MALE, GENDER_DIVERSE
+                    type: string
+                  id:
+                    description: (String) The ID of this resource.
+                    type: string
+                  isEmailVerified:
+                    description: |-
+                      (Boolean) Is the email verified of the user, can only be true if password of the user is set
+                      Is the email verified of the user, can only be true if password of the user is set
+                    type: boolean
+                  isPhoneVerified:
+                    description: |-
+                      (Boolean) Is the phone verified of the user
+                      Is the phone verified of the user
+                    type: boolean
+                  lastName:
+                    description: |-
+                      (String) Last name of the user
+                      Last name of the user
+                    type: string
+                  loginNames:
+                    description: |-
+                      (List of String) Loginnames
+                      Loginnames
+                    items:
+                      type: string
+                    type: array
+                  nickName:
+                    description: |-
+                      (String) Nick name of the user
+                      Nick name of the user
+                    type: string
+                  orgId:
+                    description: |-
+                      (String) ID of the organization
+                      ID of the organization
+                    type: string
+                  phone:
+                    description: |-
+                      (String) Phone of the user
+                      Phone of the user
+                    type: string
+                  preferredLanguage:
+                    description: |-
+                      (String) Preferred language of the user
+                      Preferred language of the user
+                    type: string
+                  preferredLoginName:
+                    description: |-
+                      (String) Preferred login name
+                      Preferred login name
+                    type: string
+                  state:
+                    description: |-
+                      (String) State of the user
+                      State of the user
+                    type: string
+                  userName:
+                    description: |-
+                      (String) Username
+                      Username
+                    type: string
                 type: object
               conditions:
                 description: Conditions of the resource.
