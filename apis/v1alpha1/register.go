@@ -13,7 +13,7 @@ import (
 
 // Package type metadata.
 const (
-	Group   = "template.upbound.io"
+	Group   = "zitadel.crossplane.io"
 	Version = "v1alpha1"
 )
 
