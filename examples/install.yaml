@@ -1,6 +1,6 @@
 apiVersion: pkg.crossplane.io/v1
 kind: Provider
 metadata:
-  name: provider-zitadel
+  name: zitadel-crossplane-provider
 spec:
-  package: infitx-org/provider-zitadel:v0.1.0
+  package: infitx-org/zitadel-crossplane-provider:v0.1.0

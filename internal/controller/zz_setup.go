@@ -9,8 +9,8 @@ import (
 
 	"github.com/crossplane/upjet/pkg/controller"
 
-	resource "github.com/infitx-org/provider-zitadel/internal/controller/null/resource"
-	providerconfig "github.com/infitx-org/provider-zitadel/internal/controller/providerconfig"
+	resource "github.com/infitx-org/zitadel-crossplane-provider/internal/controller/null/resource"
+	providerconfig "github.com/infitx-org/zitadel-crossplane-provider/internal/controller/providerconfig"
 )
 
 // Setup creates all controllers with the supplied logger and adds them to

@@ -10,9 +10,9 @@ package apis
 import (
 	"k8s.io/apimachinery/pkg/runtime"
 
-	v1alpha1 "github.com/infitx-org/provider-zitadel/apis/null/v1alpha1"
-	v1alpha1apis "github.com/infitx-org/provider-zitadel/apis/v1alpha1"
-	v1beta1 "github.com/infitx-org/provider-zitadel/apis/v1beta1"
+	v1alpha1 "github.com/infitx-org/zitadel-crossplane-provider/apis/null/v1alpha1"
+	v1alpha1apis "github.com/infitx-org/zitadel-crossplane-provider/apis/v1alpha1"
+	v1beta1 "github.com/infitx-org/zitadel-crossplane-provider/apis/v1beta1"
 )
 
 func init() {

@@ -31,12 +31,12 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 	"sigs.k8s.io/controller-runtime/pkg/metrics"
 
-	"github.com/infitx-org/provider-zitadel/apis"
-	"github.com/infitx-org/provider-zitadel/apis/v1alpha1"
-	"github.com/infitx-org/provider-zitadel/config"
-	"github.com/infitx-org/provider-zitadel/internal/clients"
-	"github.com/infitx-org/provider-zitadel/internal/controller"
-	"github.com/infitx-org/provider-zitadel/internal/features"
+	"github.com/infitx-org/zitadel-crossplane-provider/apis"
+	"github.com/infitx-org/zitadel-crossplane-provider/apis/v1alpha1"
+	"github.com/infitx-org/zitadel-crossplane-provider/config"
+	"github.com/infitx-org/zitadel-crossplane-provider/internal/clients"
+	"github.com/infitx-org/zitadel-crossplane-provider/internal/controller"
+	"github.com/infitx-org/zitadel-crossplane-provider/internal/features"
 )
 
 func main() {
@@ -62,7 +62,7 @@ func main() {
 	kingpin.MustParse(app.Parse(os.Args[1:]))
 
 	zl := zap.New(zap.UseDevMode(*debug))
-	log := logging.NewLogrLogger(zl.WithName("provider-zitadel"))
+	log := logging.NewLogrLogger(zl.WithName("zitadel-crossplane-provider"))
 	if *debug {
 		// The controller-runtime runs with a no-op logger by default. It is
 		// *very* verbose even at info level, so we only provide it a real
@@ -77,7 +77,7 @@ func main() {
 
 	mgr, err := ctrl.NewManager(cfg, ctrl.Options{
 		LeaderElection:   *leaderElection,
-		LeaderElectionID: "crossplane-leader-election-provider-zitadel",
+		LeaderElectionID: "crossplane-leader-election-zitadel-crossplane-provider",
 		Cache: cache.Options{
 			SyncPeriod: syncPeriod,
 		},

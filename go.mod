@@ -1,4 +1,4 @@
-module github.com/infitx-org/provider-zitadel
+module github.com/infitx-org/zitadel-crossplane-provider
 
 go 1.21
 

@@ -10,12 +10,12 @@ import (
 
 	ujconfig "github.com/crossplane/upjet/pkg/config"
 
-	"github.com/infitx-org/provider-zitadel/config/null"
+	"github.com/infitx-org/zitadel-crossplane-provider/config/null"
 )
 
 const (
 	resourcePrefix = "zitadel"
-	modulePath     = "github.com/infitx-org/provider-zitadel"
+	modulePath     = "github.com/infitx-org/zitadel-crossplane-provider"
 )
 
 //go:embed schema.json

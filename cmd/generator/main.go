@@ -11,7 +11,7 @@ import (
 
 	"github.com/crossplane/upjet/pkg/pipeline"
 
-	"github.com/infitx-org/provider-zitadel/config"
+	"github.com/infitx-org/zitadel-crossplane-provider/config"
 )
 
 func main() {

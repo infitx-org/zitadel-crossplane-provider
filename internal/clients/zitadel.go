@@ -15,7 +15,7 @@ import (
 
 	"github.com/crossplane/upjet/pkg/terraform"
 
-	"github.com/infitx-org/provider-zitadel/apis/v1beta1"
+	"github.com/infitx-org/zitadel-crossplane-provider/apis/v1beta1"
 )
 
 const (

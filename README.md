@@ -1,6 +1,6 @@
 # Provider Zitadel
 
-`provider-zitadel` is a [Crossplane](https://crossplane.io/) provider that
+`zitadel-crossplane-provider` is a [Crossplane](https://crossplane.io/) provider that
 is built using [Upjet](https://github.com/crossplane/upjet) code
 generation tools and exposes XRM-conformant managed resources for the
 Zitadel API.
@@ -8,9 +8,9 @@ Zitadel API.
 ## Getting Started
 
 Install the provider by using the following command after changing the image tag
-to the [latest release](https://marketplace.upbound.io/providers/infitx-org/provider-zitadel):
+to the [latest release](https://marketplace.upbound.io/providers/infitx-org/zitadel-crossplane-provider):
 ```
-up ctp provider install infitx-org/provider-zitadel:v0.1.0
+up ctp provider install infitx-org/zitadel-crossplane-provider:v0.1.0
 ```
 
 Alternatively, you can use declarative installation:
@@ -19,15 +19,15 @@ cat <<EOF | kubectl apply -f -
 apiVersion: pkg.crossplane.io/v1
 kind: Provider
 metadata:
-  name: provider-zitadel
+  name: zitadel-crossplane-provider
 spec:
-  package: infitx-org/provider-zitadel:v0.1.0
+  package: infitx-org/zitadel-crossplane-provider:v0.1.0
 EOF
 ```
 
 Notice that in this example Provider resource is referencing ControllerConfig with debug enabled.
 
-You can see the API reference [here](https://doc.crds.dev/github.com/infitx-org/provider-zitadel).
+You can see the API reference [here](https://doc.crds.dev/github.com/infitx-org/zitadel-crossplane-provider).
 
 ## Developing
 
@@ -57,4 +57,4 @@ make build
 ## Report a Bug
 
 For filing bugs, suggesting improvements, or requesting new features, please
-open an [issue](https://github.com/infitx-org/provider-zitadel/issues).
+open an [issue](https://github.com/infitx-org/zitadel-crossplane-provider/issues).
