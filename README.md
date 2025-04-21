@@ -5,6 +5,20 @@ is built using [Upjet](https://github.com/crossplane/upjet) code
 generation tools and exposes XRM-conformant managed resources for the
 Zitadel API.
 
+
+### TODO Missing in provider
+
+- zitadel_project
+- zitadel_application_oidc
+- zitadel_user_grant
+- zitadel_project_role
+- zitadel_human_user
+- zitadel_machine_user
+- zitadel_org_member
+- zitadel_action
+- zitadel_trigger_actions
+- zitadel_instance_member
+
 ## Getting Started
 
 Install the provider by using the following command after changing the image tag

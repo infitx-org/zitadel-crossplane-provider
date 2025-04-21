@@ -10,7 +10,16 @@ import (
 
 	ujconfig "github.com/crossplane/upjet/pkg/config"
 
+	"github.com/infitx-org/zitadel-crossplane-provider/config/action"
+	"github.com/infitx-org/zitadel-crossplane-provider/config/applicationoidc"
 	"github.com/infitx-org/zitadel-crossplane-provider/config/humanuser"
+	"github.com/infitx-org/zitadel-crossplane-provider/config/instancemember"
+	"github.com/infitx-org/zitadel-crossplane-provider/config/machineuser"
+	"github.com/infitx-org/zitadel-crossplane-provider/config/orgmember"
+	"github.com/infitx-org/zitadel-crossplane-provider/config/project"
+	"github.com/infitx-org/zitadel-crossplane-provider/config/projectrole"
+	"github.com/infitx-org/zitadel-crossplane-provider/config/triggeractions"
+	"github.com/infitx-org/zitadel-crossplane-provider/config/usergrant"
 )
 
 const (
@@ -37,6 +46,15 @@ func GetProvider() *ujconfig.Provider {
 	for _, configure := range []func(provider *ujconfig.Provider){
 		// add custom config functions
 		humanuser.Configure,
+		project.Configure,
+		applicationoidc.Configure,
+		usergrant.Configure,
+		projectrole.Configure,
+		machineuser.Configure,
+		orgmember.Configure,
+		instancemember.Configure,
+		triggeractions.Configure,
+		action.Configure,
 	} {
 		configure(pc)
 	}

@@ -1,0 +1,15 @@
+apiVersion: machine.zitadel.crossplane.io/v1alpha1
+kind: User
+metadata:
+  annotations:
+    meta.upbound.io/example-id: machine/v1alpha1/user
+  labels:
+    testing.upbound.io/example-name: default
+  name: default
+spec:
+  forProvider:
+    description: a machine user
+    name: name
+    orgId: ${data.zitadel_org.default.id}
+    userName: machine@example.com
+    withSecret: false

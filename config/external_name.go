@@ -10,7 +10,16 @@ import "github.com/crossplane/upjet/pkg/config"
 // provider.
 var ExternalNameConfigs = map[string]config.ExternalName{
 	// Import requires using a randomly generated ID from provider: nl-2e21sda
-	"zitadel_human_user": config.IdentifierFromProvider,
+	"zitadel_human_user":       config.IdentifierFromProvider,
+	"zitadel_project":          config.IdentifierFromProvider,
+	"zitadel_application_oidc": config.IdentifierFromProvider,
+	"zitadel_user_grant":       config.IdentifierFromProvider,
+	"zitadel_project_role":     config.IdentifierFromProvider,
+	"zitadel_machine_user":     config.IdentifierFromProvider,
+	"zitadel_org_member":       config.IdentifierFromProvider,
+	"zitadel_instance_member":  config.IdentifierFromProvider,
+	"zitadel_trigger_actions":  config.IdentifierFromProvider,
+	"zitadel_action":           config.IdentifierFromProvider,
 }
 
 // ExternalNameConfigurations applies all external name configs listed in the
