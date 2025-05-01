@@ -15,6 +15,7 @@ import (
 	"github.com/infitx-org/zitadel-crossplane-provider/config/humanuser"
 	"github.com/infitx-org/zitadel-crossplane-provider/config/instancemember"
 	"github.com/infitx-org/zitadel-crossplane-provider/config/machineuser"
+	"github.com/infitx-org/zitadel-crossplane-provider/config/org"
 	"github.com/infitx-org/zitadel-crossplane-provider/config/orgmember"
 	"github.com/infitx-org/zitadel-crossplane-provider/config/project"
 	"github.com/infitx-org/zitadel-crossplane-provider/config/projectrole"
@@ -51,6 +52,7 @@ func GetProvider() *ujconfig.Provider {
 		usergrant.Configure,
 		projectrole.Configure,
 		machineuser.Configure,
+		org.Configure,
 		orgmember.Configure,
 		instancemember.Configure,
 		triggeractions.Configure,

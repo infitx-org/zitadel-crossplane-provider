@@ -19,6 +19,7 @@ import (
 	actions "github.com/infitx-org/zitadel-crossplane-provider/internal/controller/trigger/actions"
 	grant "github.com/infitx-org/zitadel-crossplane-provider/internal/controller/user/grant"
 	action "github.com/infitx-org/zitadel-crossplane-provider/internal/controller/zitadel/action"
+	org "github.com/infitx-org/zitadel-crossplane-provider/internal/controller/zitadel/org"
 	project "github.com/infitx-org/zitadel-crossplane-provider/internal/controller/zitadel/project"
 )
 
@@ -36,6 +37,7 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		actions.Setup,
 		grant.Setup,
 		action.Setup,
+		org.Setup,
 		project.Setup,
 	} {
 		if err := setup(mgr, o); err != nil {
