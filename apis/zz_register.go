@@ -10,17 +10,33 @@ package apis
 import (
 	"k8s.io/apimachinery/pkg/runtime"
 
-	v1alpha1 "github.com/upbound/upjet-provider-template/apis/null/v1alpha1"
-	v1alpha1apis "github.com/upbound/upjet-provider-template/apis/v1alpha1"
-	v1beta1 "github.com/upbound/upjet-provider-template/apis/v1beta1"
+	v1alpha1 "github.com/infitx-org/zitadel-crossplane-provider/apis/application/v1alpha1"
+	v1alpha1human "github.com/infitx-org/zitadel-crossplane-provider/apis/human/v1alpha1"
+	v1alpha1instance "github.com/infitx-org/zitadel-crossplane-provider/apis/instance/v1alpha1"
+	v1alpha1machine "github.com/infitx-org/zitadel-crossplane-provider/apis/machine/v1alpha1"
+	v1alpha1org "github.com/infitx-org/zitadel-crossplane-provider/apis/org/v1alpha1"
+	v1alpha1project "github.com/infitx-org/zitadel-crossplane-provider/apis/project/v1alpha1"
+	v1alpha1trigger "github.com/infitx-org/zitadel-crossplane-provider/apis/trigger/v1alpha1"
+	v1alpha1user "github.com/infitx-org/zitadel-crossplane-provider/apis/user/v1alpha1"
+	v1alpha1apis "github.com/infitx-org/zitadel-crossplane-provider/apis/v1alpha1"
+	v1beta1 "github.com/infitx-org/zitadel-crossplane-provider/apis/v1beta1"
+	v1alpha1zitadel "github.com/infitx-org/zitadel-crossplane-provider/apis/zitadel/v1alpha1"
 )
 
 func init() {
 	// Register the types with the Scheme so the components can map objects to GroupVersionKinds and back
 	AddToSchemes = append(AddToSchemes,
 		v1alpha1.SchemeBuilder.AddToScheme,
+		v1alpha1human.SchemeBuilder.AddToScheme,
+		v1alpha1instance.SchemeBuilder.AddToScheme,
+		v1alpha1machine.SchemeBuilder.AddToScheme,
+		v1alpha1org.SchemeBuilder.AddToScheme,
+		v1alpha1project.SchemeBuilder.AddToScheme,
+		v1alpha1trigger.SchemeBuilder.AddToScheme,
+		v1alpha1user.SchemeBuilder.AddToScheme,
 		v1alpha1apis.SchemeBuilder.AddToScheme,
 		v1beta1.SchemeBuilder.AddToScheme,
+		v1alpha1zitadel.SchemeBuilder.AddToScheme,
 	)
 }
 

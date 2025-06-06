@@ -10,12 +10,22 @@ import (
 
 	ujconfig "github.com/crossplane/upjet/pkg/config"
 
-	"github.com/upbound/upjet-provider-template/config/null"
+	"github.com/infitx-org/zitadel-crossplane-provider/config/action"
+	"github.com/infitx-org/zitadel-crossplane-provider/config/applicationoidc"
+	"github.com/infitx-org/zitadel-crossplane-provider/config/humanuser"
+	"github.com/infitx-org/zitadel-crossplane-provider/config/instancemember"
+	"github.com/infitx-org/zitadel-crossplane-provider/config/machineuser"
+	"github.com/infitx-org/zitadel-crossplane-provider/config/org"
+	"github.com/infitx-org/zitadel-crossplane-provider/config/orgmember"
+	"github.com/infitx-org/zitadel-crossplane-provider/config/project"
+	"github.com/infitx-org/zitadel-crossplane-provider/config/projectrole"
+	"github.com/infitx-org/zitadel-crossplane-provider/config/triggeractions"
+	"github.com/infitx-org/zitadel-crossplane-provider/config/usergrant"
 )
 
 const (
-	resourcePrefix = "template"
-	modulePath     = "github.com/upbound/upjet-provider-template"
+	resourcePrefix = "zitadel"
+	modulePath     = "github.com/infitx-org/zitadel-crossplane-provider"
 )
 
 //go:embed schema.json
@@ -27,7 +37,7 @@ var providerMetadata string
 // GetProvider returns provider configuration
 func GetProvider() *ujconfig.Provider {
 	pc := ujconfig.NewProvider([]byte(providerSchema), resourcePrefix, modulePath, []byte(providerMetadata),
-		ujconfig.WithRootGroup("template.upbound.io"),
+		ujconfig.WithRootGroup("zitadel.crossplane.io"),
 		ujconfig.WithIncludeList(ExternalNameConfigured()),
 		ujconfig.WithFeaturesPackage("internal/features"),
 		ujconfig.WithDefaultResourceOptions(
@@ -36,7 +46,17 @@ func GetProvider() *ujconfig.Provider {
 
 	for _, configure := range []func(provider *ujconfig.Provider){
 		// add custom config functions
-		null.Configure,
+		humanuser.Configure,
+		project.Configure,
+		applicationoidc.Configure,
+		usergrant.Configure,
+		projectrole.Configure,
+		machineuser.Configure,
+		org.Configure,
+		orgmember.Configure,
+		instancemember.Configure,
+		triggeractions.Configure,
+		action.Configure,
 	} {
 		configure(pc)
 	}
